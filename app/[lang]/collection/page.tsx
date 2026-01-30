@@ -5,7 +5,7 @@ export default async function CollectionPage(props: { params: Promise<{ lang: st
     const params = await props.params;
     const { lang } = params;
     return (
-        <div className="bg-white min-h-screen">
+        <div className="bg-secondary min-h-screen">
             {/* Use a spacer for fixed navbar */}
             <div className="h-24"></div>
             <ProductGrid locale={lang} />
