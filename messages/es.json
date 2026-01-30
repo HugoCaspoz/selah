@@ -1,18 +1,30 @@
 {
     "Navbar": {
         "collection": "Colección",
-        "about": "Nosotros",
+        "about": "Manifiesto",
         "cart": "Bolsa",
-        "login": "Entrar"
+        "login": "Cuenta"
     },
     "Hero": {
-        "title": "SÉLAH",
-        "subtitle": "Fe en Cámara Lenta",
-        "cta": "Explorar Colección"
+        "title": "Detente. Respira. Sélah.",
+        "subtitle": "Faith in Slow Motion",
+        "cta": "Explorar la Pausa"
+    },
+    "PauseCode": {
+        "title": "El Código de la Pausa",
+        "text": "Cada pieza SÉLAH lleva un mensaje oculto. Escanea el código QR en tu prenda para acceder a una pausa devocional única.",
+        "audio": "Audio",
+        "verse": "Versículo",
+        "meditation": "Meditación"
     },
     "Products": {
         "addToCart": "Añadir a la Bolsa",
         "currency": "EUR"
+    },
+    "Success": {
+        "title": "Calma.",
+        "message": "Tu pedido está siendo preparado con calma y propósito.",
+        "cta": "Volver al Inicio"
     },
     "Common": {
         "loading": "Cargando..."

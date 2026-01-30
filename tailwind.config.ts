@@ -9,12 +9,13 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-        primary: "#1D1D1F", // Charcoal
-        secondary: "#F5F5F7", // Cream/Off-white
-        accent: "#A2B9A1", // Sage Green
-        muted: "#6B7280", // Medium Gray
+        background: "#FDFCF9", // Base: Bone white, subtle warm
+        foreground: "#1A1A1A", // Deep: Asphalt black
+        primary: "#1A1A1A", // Deep
+        secondary: "#FDFCF9", // Base
+        accent: "#8E9B8E", // Sage: Muted organic green
+        metal: "#C5A059", // Gold/Silver details
+        muted: "#717171", // Technical gray
       },
       fontFamily: {
         serif: ["var(--font-playfair)", "serif"],
