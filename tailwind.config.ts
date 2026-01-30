@@ -10,8 +10,8 @@ const config: Config = {
     extend: {
       colors: {
         background: "#F8F5F2", // Canvas: Linen/Bone
-        foreground: "#434343", // Stone: Soft dark gray
-        primary: "#434343", // Stone
+        foreground: "#5D5A56", // Stone: Much lighter warm grey
+        primary: "#5D5A56", // Stone
         secondary: "#F8F5F2", // Canvas
         accent: "#93917B", // Olive/Clay: Muted organic
         metal: "#D4AF37", // Champagne Gold
