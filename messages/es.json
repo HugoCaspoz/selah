@@ -6,16 +6,15 @@
         "login": "Cuenta"
     },
     "Hero": {
-        "title": "Detente. Respira. Sélah.",
+        "title": "SÉLAH",
         "subtitle": "Faith in Slow Motion",
         "cta": "Explorar la Pausa"
     },
-    "PauseCode": {
-        "title": "El Código de la Pausa",
-        "text": "Cada pieza SÉLAH lleva un mensaje oculto. Escanea el código QR en tu prenda para acceder a una pausa devocional única.",
-        "audio": "Audio",
-        "verse": "Versículo",
-        "meditation": "Meditación"
+    "Feed": {
+        "title": "El Feed de la Pausa",
+        "song": "Canción de la Semana",
+        "reflection": "Un minuto de reflexión",
+        "design": "Diseño con propósito"
     },
     "Products": {
         "addToCart": "Añadir a la Bolsa",

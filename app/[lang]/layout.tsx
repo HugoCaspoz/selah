@@ -1,11 +1,15 @@
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import "../globals.css";
-import { Inter, Playfair_Display } from 'next/font/google';
+import { Inter, Cormorant_Garamond } from 'next/font/google';
 import ClientLayout from '@/components/ClientLayout';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
-const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-playfair' });
+const cormorant = Cormorant_Garamond({
+    subsets: ['latin'],
+    weight: ['300', '400', '500', '600', '700'],
+    variable: '--font-cormorant'
+});
 
 export const metadata = {
     title: 'SÉLAH',
@@ -25,7 +29,7 @@ export default async function LocaleLayout(props: {
 
     return (
         <html lang={locale}>
-            <body className={`${inter.variable} ${playfair.variable} bg-secondary text-primary font-sans antialiased`}>
+            <body className={`${inter.variable} ${cormorant.variable} bg-secondary text-primary font-sans antialiased`}>
                 <NextIntlClientProvider messages={messages}>
                     <ClientLayout locale={locale}>
                         {children}

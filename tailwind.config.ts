@@ -9,16 +9,17 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "#FDFCF9", // Base: Bone white, subtle warm
-        foreground: "#1A1A1A", // Deep: Asphalt black
-        primary: "#1A1A1A", // Deep
-        secondary: "#FDFCF9", // Base
-        accent: "#8E9B8E", // Sage: Muted organic green
-        metal: "#C5A059", // Gold/Silver details
-        muted: "#717171", // Technical gray
+        background: "#F8F5F2", // Canvas: Linen/Bone
+        foreground: "#434343", // Stone: Soft dark gray
+        primary: "#434343", // Stone
+        secondary: "#F8F5F2", // Canvas
+        accent: "#93917B", // Olive/Clay: Muted organic
+        metal: "#D4AF37", // Champagne Gold
+        sand: "#E5E0D8", // Soft contrast
+        muted: "#9CA3AF", // Light gray for tech text
       },
       fontFamily: {
-        serif: ["var(--font-playfair)", "serif"],
+        serif: ["var(--font-cormorant)", "serif"],
         sans: ["var(--font-inter)", "sans-serif"],
       },
       backgroundImage: {

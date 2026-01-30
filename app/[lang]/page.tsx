@@ -1,112 +1,146 @@
 
 import { getTranslations } from 'next-intl/server';
 import Link from 'next/link';
-import { Button } from '@/components/ui/Button';
-import ProductGrid from '@/components/ProductGrid';
-import { Smartphone, BookOpen, Headphones } from 'lucide-react';
+import { Play, BookOpen, PenTool } from 'lucide-react';
 
 export default async function HomePage(props: { params: Promise<{ lang: string }> }) {
     const params = await props.params;
     const { lang } = params;
     const t = await getTranslations('Hero');
-    const tPause = await getTranslations('PauseCode');
-
-    // New Categories Array for the Grid (Manual for layout control, linking to collection)
-    // In a real app we might fetch these, but for the "Landing Narrative" we hardcode the visual structure.
-    const categories = [
-        { name: 'Atemporal', slug: 'ropa', image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&q=80&w=800' },
-        { name: 'Esencia', slug: 'joyeria', image: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&q=80&w=800' },
-        { name: 'Tiempo', slug: 'tiempo', image: 'https://images.unsplash.com/photo-1524592094714-0f0654e20314?auto=format&fit=crop&q=80&w=800' }
-    ];
+    const tFeed = await getTranslations('Feed');
 
     return (
-        <div className="w-full bg-background text-primary">
-            {/* 1. HERO SECTION */}
-            <section className="relative h-screen w-full overflow-hidden flex items-center justify-center">
-                {/* Abstract/Mood Video Placeholder */}
-                <div className="absolute inset-0 bg-gray-200 z-0">
-                    {/* Simulating slow motion video with a soft image and overlay */}
-                    <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1493606371202-6275828f90f3?q=80&w=2560&auto=format&fit=crop')] bg-cover bg-center opacity-60 mix-blend-multiply" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent" />
+        <div className="w-full bg-secondary text-primary overflow-x-hidden">
+
+            {/* 1. HERO: The Welcome */}
+            <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
+                {/* Parallax Background Effect Container */}
+                <div className="absolute inset-0 z-0">
+                    {/* Cream/Linen textured background via CSS or Image */}
+                    <div className="absolute inset-0 bg-[#F8F5F2]" />
+                    {/* Subtle Texture Overlay */}
+                    <div className="absolute inset-0 opacity-40 bg-[url('https://www.transparenttextures.com/patterns/cream-paper.png')]" />
+
+                    {/* Center Image/Video with Parallax feel (simulated layout) */}
+                    <div className="absolute inset-x-0 bottom-0 top-20 md:top-0 h-full flex items-center justify-center opacity-20 md:opacity-100">
+                        <img
+                            src="https://images.unsplash.com/photo-1518331483807-f6adc0e1ad23?q=80&w=2069&auto=format&fit=crop"
+                            alt="Wheat field"
+                            className="h-[80%] w-[90%] md:h-[70%] md:w-[40%] object-cover object-center grayscale-[20%] sepia-[10%] shadow-2xl"
+                        />
+                    </div>
                 </div>
 
-                <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-                    <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl mb-6 tracking-tight text-primary animate-fade-in shadow-black drop-shadow-sm">
+                <div className="relative z-10 text-center ">
+                    <h1 className="font-serif text-[6rem] md:text-[10rem] lg:text-[14rem] leading-none tracking-tighter text-primary/90 mix-blend-multiply animate-fade-in">
                         {t('title')}
                     </h1>
-                    <div className="h-px w-24 bg-primary/30 mx-auto mb-8 animate-slide-up" />
+                    <p className="font-sans text-lg md:text-xl tracking-[0.3em] uppercase mt-4 text-accent animate-slide-up">
+                        {t('subtitle')}
+                    </p>
+                </div>
+            </section>
 
-                    <Link href={`/${lang}/collection`}>
-                        <button className="px-10 py-4 border border-primary/40 text-primary hover:bg-primary hover:text-white transition-all duration-700 ease-out uppercase tracking-[0.2em] text-xs md:text-sm animate-slide-up backdrop-blur-sm">
-                            {t('cta')}
-                        </button>
+            {/* 2. ASYMMETRIC GRID: Exploration */}
+            <section className="py-32 px-4 md:px-12 container mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 h-auto md:h-[800px]">
+
+                    {/* TEXTIL (The Anchor) - 60% Width */}
+                    <Link href={`/${lang}/collection`} className="md:col-span-7 relative group block h-[500px] md:h-full overflow-hidden">
+                        <div className="absolute inset-0 bg-sand transition-colors duration-700 group-hover:bg-[#EAE5DD]" />
+                        <img
+                            src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&q=80&w=1200"
+                            alt="Textil"
+                            className="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-1000 ease-in-out"
+                        />
+                        <div className="absolute bottom-8 left-8">
+                            <span className="font-serif text-4xl text-white mix-blend-difference">Atemporal.</span>
+                        </div>
                     </Link>
-                </div>
-            </section>
 
-            {/* 2. THE GRID (Categories) */}
-            <section className="py-24 md:py-32 px-4 container mx-auto">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {categories.map((cat, i) => (
-                        <Link href={`/${lang}/collection`} key={cat.slug} className="group relative aspect-[3/4] overflow-hidden block">
-                            <div className="absolute inset-0">
+                    {/* RIGHT COLUMN */}
+                    <div className="md:col-span-5 flex flex-col gap-8 h-full">
+                        {/* JEWELRY & WATCHES */}
+                        <div className="grid grid-cols-2 gap-4 h-1/2">
+                            <Link href={`/${lang}/collection`} className="relative group block overflow-hidden bg-white">
                                 <img
-                                    src={cat.image}
-                                    alt={cat.name}
-                                    className="w-full h-full object-cover transition-transform duration-[1.5s] ease-in-out group-hover:scale-110 grayscale-[10%] group-hover:grayscale-0"
+                                    src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&q=80&w=600"
+                                    alt="Joyas"
+                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                                 />
-                                <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-700" />
-                            </div>
-                            <div className="absolute bottom-8 left-0 right-0 text-center">
-                                <span className="font-serif text-2xl md:text-3xl text-white tracking-wide opacity-90 group-hover:opacity-100 transition-opacity">
-                                    {cat.name}
-                                </span>
-                            </div>
-                        </Link>
-                    ))}
-                </div>
-            </section>
-
-            {/* 3. CODE OF THE PAUSE */}
-            <section className="py-32 bg-accent text-white relative overflow-hidden">
-                <div className="container mx-auto px-4 flex flex-col md:flex-row items-center gap-16">
-                    <div className="w-full md:w-1/2 space-y-8 text-center md:text-left">
-                        <h2 className="font-serif text-4xl md:text-5xl">{tPause('title')}</h2>
-                        <p className="font-sans text-lg md:text-xl font-light leading-relaxed opacity-90 max-w-md mx-auto md:mx-0">
-                            {tPause('text')}
-                        </p>
-                        <div className="flex justify-center md:justify-start gap-8 pt-4">
-                            <div className="flex flex-col items-center gap-2">
-                                <Headphones className="w-8 h-8 opacity-80" />
-                                <span className="text-xs uppercase tracking-widest opacity-70">{tPause('audio')}</span>
-                            </div>
-                            <div className="flex flex-col items-center gap-2">
-                                <BookOpen className="w-8 h-8 opacity-80" />
-                                <span className="text-xs uppercase tracking-widest opacity-70">{tPause('verse')}</span>
-                            </div>
-                            <div className="flex flex-col items-center gap-2">
-                                <Smartphone className="w-8 h-8 opacity-80" />
-                                <span className="text-xs uppercase tracking-widest opacity-70">QR</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="w-full md:w-1/2 flex justify-center">
-                        {/* Abstract QR visual */}
-                        <div className="w-64 h-64 border border-white/20 relative flex items-center justify-center rotate-45">
-                            <div className="w-56 h-56 border border-white/40 flex items-center justify-center">
-                                <div className="w-48 h-48 bg-white/10 backdrop-blur-md flex items-center justify-center -rotate-45">
-                                    <span className="font-serif text-4xl italic">Sélah</span>
+                                <div className="absolute bottom-4 left-4">
+                                    <span className="font-serif text-xl text-white drop-shadow-md">Esencia.</span>
                                 </div>
+                            </Link>
+                            <Link href={`/${lang}/collection`} className="relative group block overflow-hidden bg-white">
+                                <img
+                                    src="https://images.unsplash.com/photo-1524592094714-0f0654e20314?auto=format&fit=crop&q=80&w=600"
+                                    alt="Tiempo"
+                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                />
+                                <div className="absolute bottom-4 left-4">
+                                    <span className="font-serif text-xl text-white drop-shadow-md">Tiempo.</span>
+                                </div>
+                            </Link>
+                        </div>
+
+                        {/* ACCESSORIES / PROMO */}
+                        <Link href={`/${lang}/collection`} className="h-1/2 bg-accent/20 flex flex-col justify-center items-center text-center p-8 group hover:bg-accent/30 transition-colors cursor-pointer">
+                            <h3 className="font-serif text-3xl text-primary mb-4">Complementos</h3>
+                            <p className="font-sans text-sm text-primary/70 max-w-xs leading-relaxed">
+                                Detalles que acompañan tu pausa diaria.
+                            </p>
+                            <div className="mt-6 w-12 h-px bg-primary transform group-hover:scale-x-150 transition-transform" />
+                        </Link>
+                    </div>
+                </div>
+            </section>
+
+            {/* 3. THE FEED OF THE PAUSE */}
+            <section className="py-24 border-t border-primary/10">
+                <div className="container mx-auto px-4 mb-12 flex justify-between items-end">
+                    <h2 className="font-serif text-4xl md:text-5xl text-primary">{tFeed('title')}</h2>
+                    <span className="hidden md:block font-sans text-xs tracking-widest text-muted uppercase">Updates Weekly</span>
+                </div>
+
+                <div className="container mx-auto px-4 overflow-x-auto pb-8">
+                    <div className="flex gap-8 min-w-max">
+                        {/* Card 1: Song */}
+                        <div className="w-80 space-y-4 group cursor-pointer">
+                            <div className="aspect-square bg-sand relative overflow-hidden flex items-center justify-center">
+                                <div className="absolute inset-0 bg-primary/5 group-hover:bg-primary/10 transition-colors" />
+                                <Play className="w-12 h-12 text-primary opacity-80" />
+                            </div>
+                            <div>
+                                <p className="text-xs uppercase tracking-widest text-accent mb-1">{tFeed('song')}</p>
+                                <h4 className="font-serif text-xl text-primary">"Be Still" - Instrumental</h4>
+                            </div>
+                        </div>
+
+                        {/* Card 2: Reflection */}
+                        <div className="w-80 space-y-4 group cursor-pointer">
+                            <div className="aspect-square bg-[#E8E8E8] relative overflow-hidden flex items-center justify-center">
+                                <BookOpen className="w-12 h-12 text-primary opacity-80" />
+                            </div>
+                            <div>
+                                <p className="text-xs uppercase tracking-widest text-accent mb-1">{tFeed('reflection')}</p>
+                                <h4 className="font-serif text-xl text-primary">El arte de no hacer nada.</h4>
+                            </div>
+                        </div>
+
+                        {/* Card 3: Design */}
+                        <div className="w-80 space-y-4 group cursor-pointer">
+                            <div className="aspect-square bg-secondary border border-primary/10 relative overflow-hidden flex items-center justify-center">
+                                <PenTool className="w-12 h-12 text-primary opacity-80" />
+                            </div>
+                            <div>
+                                <p className="text-xs uppercase tracking-widest text-accent mb-1">{tFeed('design')}</p>
+                                <h4 className="font-serif text-xl text-primary">Proceso: Algodón Orgánico.</h4>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-
-            {/* 4. PRODUCT HIGHLIGHT (Existing Grid but filtered could go here, or just let users explore) */}
-            <div className="py-24 bg-background">
-                <ProductGrid locale={lang} />
-            </div>
 
         </div>
     );
