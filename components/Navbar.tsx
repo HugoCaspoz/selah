@@ -16,8 +16,10 @@ export default function Navbar({ locale }: { locale: string }) {
     const { items, toggleCart } = useCartStore();
     const router = useRouter();
     const pathname = usePathname();
+    const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
+        setMounted(true);
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 50);
         };
@@ -31,6 +33,9 @@ export default function Navbar({ locale }: { locale: string }) {
         const newPath = pathname.replace(`/${locale}`, `/${newLocale}`);
         router.push(newPath);
     };
+
+    // Prevent hydration mismatch for cart count
+    const cartCount = mounted ? items.length : 0;
 
     return (
         <nav
@@ -82,9 +87,9 @@ export default function Navbar({ locale }: { locale: string }) {
 
                     <button onClick={toggleCart} className="relative hover:text-accent transition-colors">
                         <ShoppingBag className="h-5 w-5 stroke-[1.5]" />
-                        {items.length > 0 && (
+                        {cartCount > 0 && (
                             <span className="absolute -top-1 -right-1 bg-accent text-white text-[9px] w-3.5 h-3.5 flex items-center justify-center rounded-full">
-                                {items.length}
+                                {cartCount}
                             </span>
                         )}
                     </button>

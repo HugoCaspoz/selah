@@ -1,6 +1,7 @@
 'use client';
 
 import { useCartStore } from '@/store/cart';
+import { useState, useEffect } from 'react';
 import { X, Minus, Plus, Trash2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from './ui/Button';
@@ -10,6 +11,14 @@ export default function CartSidebar({ locale }: { locale: string }) {
     const { isOpen, toggleCart, items, removeItem, addItem, clearCart } = useCartStore();
 
     const total = items.reduce((acc, item) => acc + item.price * item.quantity, 0);
+
+    // Hydration fix
+    const [mounted, setMounted] = useState(false);
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
+    if (!mounted) return null;
 
     const handleCheckout = async () => {
         // Call Stripe API
@@ -59,9 +68,15 @@ export default function CartSidebar({ locale }: { locale: string }) {
                             ) : (
                                 items.map((item) => (
                                     <div key={item.id} className="flex gap-4">
-                                        <div className="relative w-20 h-20 bg-gray-50 flex-shrink-0">
-                                            {/* Placeholder image logic if no image */}
-                                            <div className="absolute inset-0 flex items-center justify-center text-xs text-gray-300">Img</div>
+                                        <div className="relative w-20 h-20 bg-gray-50 flex-shrink-0 overflow-hidden">
+                                            {item.image && (
+                                                <Image
+                                                    src={item.image}
+                                                    alt={item.name}
+                                                    fill
+                                                    className="object-cover"
+                                                />
+                                            )}
                                         </div>
                                         <div className="flex-1">
                                             <div className="flex justify-between items-start mb-1">
