@@ -1,0 +1,20 @@
+{
+  "Navbar": {
+    "collection": "Collection",
+    "about": "About",
+    "cart": "Cart",
+    "login": "Login"
+  },
+  "Hero": {
+    "title": "SÉLAH",
+    "subtitle": "Faith in Slow Motion",
+    "cta": "Explore Collection"
+  },
+  "Products": {
+    "addToCart": "Add to Bag",
+    "currency": "USD"
+  },
+  "Common": {
+    "loading": "Loading..."
+  }
+}

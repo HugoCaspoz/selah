@@ -1,0 +1,20 @@
+{
+    "Navbar": {
+        "collection": "Colección",
+        "about": "Nosotros",
+        "cart": "Bolsa",
+        "login": "Entrar"
+    },
+    "Hero": {
+        "title": "SÉLAH",
+        "subtitle": "Fe en Cámara Lenta",
+        "cta": "Explorar Colección"
+    },
+    "Products": {
+        "addToCart": "Añadir a la Bolsa",
+        "currency": "EUR"
+    },
+    "Common": {
+        "loading": "Cargando..."
+    }
+}
