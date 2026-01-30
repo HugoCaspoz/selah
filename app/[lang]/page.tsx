@@ -84,7 +84,7 @@ export default async function HomePage(props: { params: Promise<{ lang: string }
                         </div>
 
                         {/* Bottom Right: COMPLEMENTOS (Solid Clay Box) */}
-                        <Link href={`/${lang}/collection`} className="h-1/2 bg-clay flex flex-col justify-center items-center text-center p-12 group hover:bg-[#6e6c53] transition-colors cursor-pointer text-[#FDFBF7]">
+                        <Link href={`/${lang}/collection`} className="h-1/2 bg-[#807E63] flex flex-col justify-center items-center text-center p-8 group hover:bg-[#6e6c53] transition-colors cursor-pointer text-[#FDFBF7]">
                             <h3 className="font-serif text-4xl mb-6">Complementos</h3>
                             <p className="font-sans text-xs opacity-80 max-w-[200px] leading-relaxed mb-8">
                                 Detalles que acompañan tu pausa diaria.
