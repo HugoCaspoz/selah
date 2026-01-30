@@ -14,6 +14,7 @@ const config: Config = {
         primary: "#5D5A56", // Stone
         secondary: "#F8F5F2", // Canvas
         accent: "#93917B", // Olive/Clay: Muted organic
+        clay: "#807E63", // The specific Olive/Brown form the image
         metal: "#D4AF37", // Champagne Gold
         sand: "#E5E0D8", // Soft contrast
         muted: "#9CA3AF", // Light gray for tech text

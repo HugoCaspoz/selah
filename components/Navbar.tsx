@@ -37,46 +37,53 @@ export default function Navbar({ locale }: { locale: string }) {
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-secondary/95 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6'
                 }`}
         >
-            <div className="container mx-auto px-4 flex items-center justify-between">
-                {/* Mobile Menu Button */}
-                <button
-                    className="lg:hidden text-primary"
-                    onClick={() => setIsMobileMenuOpen(true)}
-                >
-                    <Menu className="h-6 w-6" />
-                </button>
+            <div className="container mx-auto px-4 grid grid-cols-[auto_1fr_auto] lg:grid-cols-3 items-center">
+                {/* Mobile Menu Button - Left */}
+                <div className="flex items-center lg:hidden">
+                    <button
+                        className="text-primary"
+                        onClick={() => setIsMobileMenuOpen(true)}
+                    >
+                        <Menu className="h-6 w-6" />
+                    </button>
+                </div>
 
-                {/* Logo */}
-                <Link href={`/${locale}`} className={`text-2xl font-serif font-bold tracking-tighter ${isScrolled ? 'text-primary' : 'text-primary mix-blend-difference'}`}>
-                    SÉLAH
-                </Link>
+                {/* Logo - Left on Desktop, Center on Mobile? No, reference implies standard header. Let's keep Logo Left for branding, or Center if strictly following "Christian web" usually center logo. 
+                   User said: "Header: Minimalist, centered navigation... Logo serif top-left."
+                   So: Logo Left (Col 1), Nav Center (Col 2), Icons Right (Col 3).
+                */}
+                <div className="justify-self-start lg:col-span-1">
+                    <Link href={`/${locale}`} className={`text-3xl font-serif font-bold tracking-tighter ${isScrolled ? 'text-primary' : 'text-primary'}`}>
+                        SÉLAH
+                    </Link>
+                </div>
 
-                {/* Desktop Nav */}
-                <div className="hidden lg:flex items-center space-x-8">
-                    <Link href={`/${locale}/collection`} className="text-sm uppercase tracking-widest hover:text-accent transition-colors">
+                {/* Desktop Nav - Center */}
+                <div className="hidden lg:flex items-center justify-center space-x-12 col-span-1">
+                    <Link href={`/${locale}/collection`} className="text-xs uppercase tracking-[0.2em] font-medium hover:text-accent transition-colors">
                         {t('collection')}
                     </Link>
-                    <Link href={`/${locale}/about`} className="text-sm uppercase tracking-widest hover:text-accent transition-colors">
+                    <Link href={`/${locale}/about`} className="text-xs uppercase tracking-[0.2em] font-medium hover:text-accent transition-colors">
                         {t('about')}
                     </Link>
                 </div>
 
-                {/* Actions */}
-                <div className="flex items-center space-x-4">
-                    <div className="hidden md:flex items-center space-x-2 text-xs font-medium">
-                        <button onClick={() => switchLocale('en')} className={locale === 'en' ? 'underline' : 'opacity-50'}>EN</button>
-                        <span>/</span>
-                        <button onClick={() => switchLocale('es')} className={locale === 'es' ? 'underline' : 'opacity-50'}>ES</button>
+                {/* Actions - Right */}
+                <div className="flex items-center justify-end space-x-6 col-span-1">
+                    <div className="hidden md:flex items-center space-x-1 text-[10px] font-medium tracking-widest">
+                        <button onClick={() => switchLocale('en')} className={locale === 'en' ? 'font-bold' : 'opacity-50 hover:opacity-100'}>EN</button>
+                        <span className="opacity-30">|</span>
+                        <button onClick={() => switchLocale('es')} className={locale === 'es' ? 'font-bold' : 'opacity-50 hover:opacity-100'}>ES</button>
                     </div>
 
                     <button className="hover:text-accent transition-colors">
-                        <User className="h-5 w-5" />
+                        <User className="h-5 w-5 stroke-[1.5]" />
                     </button>
 
                     <button onClick={toggleCart} className="relative hover:text-accent transition-colors">
-                        <ShoppingBag className="h-5 w-5" />
+                        <ShoppingBag className="h-5 w-5 stroke-[1.5]" />
                         {items.length > 0 && (
-                            <span className="absolute -top-1 -right-1 bg-accent text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full">
+                            <span className="absolute -top-1 -right-1 bg-accent text-white text-[9px] w-3.5 h-3.5 flex items-center justify-center rounded-full">
                                 {items.length}
                             </span>
                         )}
